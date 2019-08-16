@@ -39,3 +39,7 @@ Route::resource('schools','SchoolController');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
