@@ -64,6 +64,11 @@
         </style>
     </head>
     <body>
+         @if(session('message'))
+            <div class="alert alert-primary" role="alert" id="infoMessage">
+                {{session('message')}}
+            </div>
+        @endif
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

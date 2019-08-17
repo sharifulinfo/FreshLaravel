@@ -71,6 +71,11 @@
                 </div>
             </div>
         </nav>
+        @if(session()->has('message'))
+            <div class="alert alert-primary" role="alert" id="infoMessage">
+                {{Session()->get('message')}}
+            </div>
+        @endif
 
         <main class="py-4">
             @yield('content')

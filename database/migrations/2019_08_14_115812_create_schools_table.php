@@ -17,6 +17,7 @@ class CreateSchoolsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

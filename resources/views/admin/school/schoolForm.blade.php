@@ -9,4 +9,9 @@
 	<input type="text" id="phone" class="form-control" name="phone" value="{{old('phone') ?? $school->phone}}">
 	<small class="form-text text-danger">{{$errors->first('phone')}}</small>
 </div>
+<div class="form-group d-flex flex-column">
+	<label for="phone">Image:</label>
+	<input type="file" name="image" class="py-2">
+	<small class="form-text text-danger">{{$errors->first('image')}}</small>
+</div>
 <button type="submit" class="btn btn-lg btn-primary">Save</button>

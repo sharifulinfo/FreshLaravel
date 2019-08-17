@@ -11,6 +11,7 @@ class SchoolController extends Controller
 		return request()->validate([
     		'name'	=> 'required|min:3',
     		'phone'	=> 'required',
+            'image' => 'sometimes|file|image',
     	]);
 	}
 
@@ -25,7 +26,8 @@ class SchoolController extends Controller
     }
 
     public function store(){
-    	School::create($this->validateRequest());
+    	$school = School::create($this->validateRequest());
+        $this->uploadImage($school);
     	return redirect('schools')->with('message','Inserted Success!');
     }
 
@@ -39,6 +41,7 @@ class SchoolController extends Controller
 
 	public function update(School $school){
     	$school->update($this->validateRequest());
+        $this->uploadImage($school);
     	return redirect('schools')->with('message','updated Success!');
 	}
 
@@ -46,4 +49,16 @@ class SchoolController extends Controller
 		$school->delete();
 		return redirect('schools')->with('message','Deleted Success!');
 	}
+
+    private function uploadImage($school){
+        if(request()->has('image')){
+            $school->update([
+                'image' => request()->image->store('uploads','public'),
+            ]);
+
+            // if(file_exists(asset('storage/uploads/'.$school->image)) AND !empty($school->image)){ 
+            //     unlink(asset('storage/uploads/'.$school->image));
+            //  } 
+        }
+    }
 }

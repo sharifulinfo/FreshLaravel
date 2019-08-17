@@ -13,6 +13,11 @@
 			<td>{{$school->phone}}</td>
 		</tr>
 		<tr>
+			<td width="100">Image</td>
+			<td width="5">:</td>
+			<td><img src="{{asset('storage/'.$school->image)}}" alt="Images here" class="img-thumbnail"></td>
+		</tr>
+		<tr>
 			<td colspan="3" class="text-right">
 				<a href="/schools/{{$school->id}}/edit" class="btn btn-sm btn-primary">Edit</a>
 				<form accept="/schools/{{$school->id}}" method="POST">
